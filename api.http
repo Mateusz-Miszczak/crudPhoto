@@ -1,0 +1,25 @@
+GET http://localhost:3001/cards HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:3001/cards HTTP/1.1
+Content-Type: application/json
+
+{
+  "title":"Something1"
+}
+
+###
+
+PUT http://localhost:3001/cards/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title":"Something2"
+}
+
+###
+
+DELETE http://localhost:3001/cards/1 HTTP/1.1
+Content-Type: application/json
