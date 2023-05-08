@@ -1,5 +1,13 @@
+import CardCreate from './components/CardCreate';
+import CardsList from './components/CardsList';
+
 function App() {
-  return <div className="text-3xl font-bold underline">123</div>;
+  return (
+    <div className="text-3xl">
+      <CardCreate />
+      <CardsList />
+    </div>
+  );
 }
 
 export default App;
