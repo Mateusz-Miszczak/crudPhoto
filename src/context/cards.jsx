@@ -7,7 +7,7 @@ function Provider({ children }) {
   const [cards, setCards] = useState([]);
 
   const fetchCards = useCallback(async title => {
-    const response = await axios.get('httpL//localhost:3001/cards');
+    const response = await axios.get('http://localhost:3001/cards');
 
     setCards(response.data);
   }, []);
@@ -21,10 +21,41 @@ function Provider({ children }) {
     setCards(updatedCards);
   };
 
+  const deleteCardById = async id => {
+    await axios.delete(`http://localhost:3001/cards/${id}`);
+
+    const cardsAfterDelete = cards.filter(card => {
+      return card.id !== id;
+    });
+
+    setCards(cardsAfterDelete);
+  };
+
+  const editCardById = async (id, newTitle) => {
+    const response = await axios.put(`http://localhost:3001/cards/${id}`, {
+      title: newTitle,
+    });
+
+    const updatedCards = cards.map(card => {
+      if (card.id === id) {
+        return { ...card, ...response.data };
+      }
+
+      return card;
+    });
+
+    setCards(updatedCards);
+  };
+
   const functionsAndState = {
+    cards,
     fetchCards,
     createCard,
+    deleteCardById,
+    editCardById,
   };
+
+  console.log(cards);
 
   return (
     <CardsContext.Provider value={functionsAndState}>

@@ -1,9 +1,13 @@
+import CardShow from './CardShow';
+import useCardsContext from '../hooks/useCardsContext';
+
 function CardsList() {
-  return (
-    <div>
-      <div>123</div>
-    </div>
-  );
+  const { cards } = useCardsContext();
+
+  const renderCards = cards.map(card => {
+    return <CardShow card={card} key={card.id} />;
+  });
+  return <div>{renderCards}</div>;
 }
 
 export default CardsList;

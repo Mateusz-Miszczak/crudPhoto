@@ -18,8 +18,10 @@ function CardCreate() {
 
   return (
     <div>
-      <h2>Add the title and create new card that u can edit!</h2>
-      <form onSubmit={handleFormSubmit}>
+      <h2 className="bg-indigo-400 h-5">
+        Add the title and create new card that u can edit!
+      </h2>
+      <form className="" onSubmit={handleFormSubmit}>
         <label>Title</label>
         <input value={title} onChange={handleChange} />
         <button>Add card</button>
